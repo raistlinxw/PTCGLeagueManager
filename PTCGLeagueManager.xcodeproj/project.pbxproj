@@ -7,24 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D058F702C6FF1BD00A3F293 /* FileImporterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D058F6F2C6FF1BD00A3F293 /* FileImporterView.swift */; };
-		2D07AD372C66A35A0000EF7E /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07AD362C66A35A0000EF7E /* GroupView.swift */; };
-		2D07AD392C6BBD430000EF7E /* YearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07AD382C6BBD430000EF7E /* YearPicker.swift */; };
-		2D5CC4DE2C5D847C00AD81D0 /* AddPlayerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5CC4DD2C5D847C00AD81D0 /* AddPlayerFormView.swift */; };
-		2D5CC4E02C5D84A800AD81D0 /* PlayerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5CC4DF2C5D84A800AD81D0 /* PlayerDetailView.swift */; };
-		2D5CC4E22C5D84ED00AD81D0 /* EditPlayerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5CC4E12C5D84ED00AD81D0 /* EditPlayerFormView.swift */; };
-		2D5CC4E42C5D8EB400AD81D0 /* AttendaceFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5CC4E32C5D8EB400AD81D0 /* AttendaceFormView.swift */; };
-		2D5CC4E62C61C71F00AD81D0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5CC4E52C61C71F00AD81D0 /* Utilities.swift */; };
-		2DF73E1A2C45EA3200EE1632 /* PTCGLeagueManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF73E192C45EA3200EE1632 /* PTCGLeagueManagerApp.swift */; };
-		2DF73E1C2C45EA3200EE1632 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF73E1B2C45EA3200EE1632 /* ContentView.swift */; };
-		2DF73E1E2C45EA3300EE1632 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DF73E1D2C45EA3300EE1632 /* Assets.xcassets */; };
-		2DF73E212C45EA3300EE1632 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DF73E202C45EA3300EE1632 /* Preview Assets.xcassets */; };
+		2DC61EA72C715F3E00A25FC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D354B5D2C715B3D00499F31 /* ContentView.swift */; };
+		2DC61EA82C715FD200A25FC2 /* FileImporterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D354B5C2C715B3D00499F31 /* FileImporterView.swift */; };
+		2DC61EA92C715FD200A25FC2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D354B602C715B3D00499F31 /* Utilities.swift */; };
+		2DC61EAA2C715FD200A25FC2 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D354B592C715B3D00499F31 /* GroupView.swift */; };
+		2DC61EAB2C715FD200A25FC2 /* YearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D354B572C715B3D00499F31 /* YearPicker.swift */; };
+		2DC61EAC2C715FD200A25FC2 /* PTCGLeagueManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D354B612C715B3D00499F31 /* PTCGLeagueManagerApp.swift */; };
+		2DC61EAD2C715FD200A25FC2 /* AttendaceFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D354B5A2C715B3D00499F31 /* AttendaceFormView.swift */; };
+		2DC61EAE2C715FD200A25FC2 /* EditPlayerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D354B5B2C715B3D00499F31 /* EditPlayerFormView.swift */; };
+		2DC61EAF2C715FD200A25FC2 /* PlayerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D354B5E2C715B3D00499F31 /* PlayerDetailView.swift */; };
+		2DC61EB02C715FD200A25FC2 /* AddPlayerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D354B5F2C715B3D00499F31 /* AddPlayerFormView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D058F6F2C6FF1BD00A3F293 /* FileImporterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileImporterView.swift; sourceTree = "<group>"; };
-		2D07AD362C66A35A0000EF7E /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
-		2D07AD382C6BBD430000EF7E /* YearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearPicker.swift; sourceTree = "<group>"; };
 		2D354B562C715AA100499F31 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		2D354B572C715B3D00499F31 /* YearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearPicker.swift; sourceTree = "<group>"; };
 		2D354B582C715B3D00499F31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,16 +33,7 @@
 		2D354B602C715B3D00499F31 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		2D354B612C715B3D00499F31 /* PTCGLeagueManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTCGLeagueManagerApp.swift; sourceTree = "<group>"; };
 		2D354B632C715B3D00499F31 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2D5CC4DD2C5D847C00AD81D0 /* AddPlayerFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerFormView.swift; sourceTree = "<group>"; };
-		2D5CC4DF2C5D84A800AD81D0 /* PlayerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailView.swift; sourceTree = "<group>"; };
-		2D5CC4E12C5D84ED00AD81D0 /* EditPlayerFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlayerFormView.swift; sourceTree = "<group>"; };
-		2D5CC4E32C5D8EB400AD81D0 /* AttendaceFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendaceFormView.swift; sourceTree = "<group>"; };
-		2D5CC4E52C61C71F00AD81D0 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		2DF73E162C45EA3200EE1632 /* PTCGLeagueManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PTCGLeagueManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2DF73E192C45EA3200EE1632 /* PTCGLeagueManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTCGLeagueManagerApp.swift; sourceTree = "<group>"; };
-		2DF73E1B2C45EA3200EE1632 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		2DF73E1D2C45EA3300EE1632 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2DF73E202C45EA3300EE1632 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +55,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		2DF73E0D2C45EA3200EE1632 = {
+		2D6E67562C715DCB0081E2FC /* PTCGLeagueManager */ = {
 			isa = PBXGroup;
 			children = (
 				2D354B5C2C715B3D00499F31 /* FileImporterView.swift */,
@@ -84,8 +70,15 @@
 				2D354B592C715B3D00499F31 /* GroupView.swift */,
 				2D354B582C715B3D00499F31 /* Assets.xcassets */,
 				2D354B622C715B3D00499F31 /* Preview Content */,
+			);
+			path = PTCGLeagueManager;
+			sourceTree = "<group>";
+		};
+		2DF73E0D2C45EA3200EE1632 = {
+			isa = PBXGroup;
+			children = (
+				2D6E67562C715DCB0081E2FC /* PTCGLeagueManager */,
 				2D354B562C715AA100499F31 /* .gitignore */,
-				2DF73E182C45EA3200EE1632 /* PTCGLeagueManager */,
 				2DF73E172C45EA3200EE1632 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,33 +89,6 @@
 				2DF73E162C45EA3200EE1632 /* PTCGLeagueManager.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		2DF73E182C45EA3200EE1632 /* PTCGLeagueManager */ = {
-			isa = PBXGroup;
-			children = (
-				2D058F6F2C6FF1BD00A3F293 /* FileImporterView.swift */,
-				2D07AD382C6BBD430000EF7E /* YearPicker.swift */,
-				2DF73E192C45EA3200EE1632 /* PTCGLeagueManagerApp.swift */,
-				2DF73E1B2C45EA3200EE1632 /* ContentView.swift */,
-				2D5CC4E52C61C71F00AD81D0 /* Utilities.swift */,
-				2D5CC4E32C5D8EB400AD81D0 /* AttendaceFormView.swift */,
-				2D5CC4E12C5D84ED00AD81D0 /* EditPlayerFormView.swift */,
-				2D5CC4DF2C5D84A800AD81D0 /* PlayerDetailView.swift */,
-				2D5CC4DD2C5D847C00AD81D0 /* AddPlayerFormView.swift */,
-				2D07AD362C66A35A0000EF7E /* GroupView.swift */,
-				2DF73E1D2C45EA3300EE1632 /* Assets.xcassets */,
-				2DF73E1F2C45EA3300EE1632 /* Preview Content */,
-			);
-			path = PTCGLeagueManager;
-			sourceTree = "<group>";
-		};
-		2DF73E1F2C45EA3300EE1632 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				2DF73E202C45EA3300EE1632 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,8 +149,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DF73E212C45EA3300EE1632 /* Preview Assets.xcassets in Resources */,
-				2DF73E1E2C45EA3300EE1632 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,16 +159,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D07AD392C6BBD430000EF7E /* YearPicker.swift in Sources */,
-				2D5CC4E02C5D84A800AD81D0 /* PlayerDetailView.swift in Sources */,
-				2D5CC4E22C5D84ED00AD81D0 /* EditPlayerFormView.swift in Sources */,
-				2D07AD372C66A35A0000EF7E /* GroupView.swift in Sources */,
-				2D058F702C6FF1BD00A3F293 /* FileImporterView.swift in Sources */,
-				2D5CC4E62C61C71F00AD81D0 /* Utilities.swift in Sources */,
-				2D5CC4E42C5D8EB400AD81D0 /* AttendaceFormView.swift in Sources */,
-				2D5CC4DE2C5D847C00AD81D0 /* AddPlayerFormView.swift in Sources */,
-				2DF73E1C2C45EA3200EE1632 /* ContentView.swift in Sources */,
-				2DF73E1A2C45EA3200EE1632 /* PTCGLeagueManagerApp.swift in Sources */,
+				2DC61EA82C715FD200A25FC2 /* FileImporterView.swift in Sources */,
+				2DC61EA92C715FD200A25FC2 /* Utilities.swift in Sources */,
+				2DC61EAA2C715FD200A25FC2 /* GroupView.swift in Sources */,
+				2DC61EAB2C715FD200A25FC2 /* YearPicker.swift in Sources */,
+				2DC61EAC2C715FD200A25FC2 /* PTCGLeagueManagerApp.swift in Sources */,
+				2DC61EAD2C715FD200A25FC2 /* AttendaceFormView.swift in Sources */,
+				2DC61EAE2C715FD200A25FC2 /* EditPlayerFormView.swift in Sources */,
+				2DC61EAF2C715FD200A25FC2 /* PlayerDetailView.swift in Sources */,
+				2DC61EB02C715FD200A25FC2 /* AddPlayerFormView.swift in Sources */,
+				2DC61EA72C715F3E00A25FC2 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
