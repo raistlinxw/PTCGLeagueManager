@@ -26,6 +26,18 @@
 		2D07AD362C66A35A0000EF7E /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		2D07AD382C6BBD430000EF7E /* YearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearPicker.swift; sourceTree = "<group>"; };
 		2D354B562C715AA100499F31 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		2D354B572C715B3D00499F31 /* YearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearPicker.swift; sourceTree = "<group>"; };
+		2D354B582C715B3D00499F31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2D354B592C715B3D00499F31 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
+		2D354B5A2C715B3D00499F31 /* AttendaceFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendaceFormView.swift; sourceTree = "<group>"; };
+		2D354B5B2C715B3D00499F31 /* EditPlayerFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlayerFormView.swift; sourceTree = "<group>"; };
+		2D354B5C2C715B3D00499F31 /* FileImporterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileImporterView.swift; sourceTree = "<group>"; };
+		2D354B5D2C715B3D00499F31 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2D354B5E2C715B3D00499F31 /* PlayerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailView.swift; sourceTree = "<group>"; };
+		2D354B5F2C715B3D00499F31 /* AddPlayerFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerFormView.swift; sourceTree = "<group>"; };
+		2D354B602C715B3D00499F31 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		2D354B612C715B3D00499F31 /* PTCGLeagueManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTCGLeagueManagerApp.swift; sourceTree = "<group>"; };
+		2D354B632C715B3D00499F31 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2D5CC4DD2C5D847C00AD81D0 /* AddPlayerFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerFormView.swift; sourceTree = "<group>"; };
 		2D5CC4DF2C5D84A800AD81D0 /* PlayerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailView.swift; sourceTree = "<group>"; };
 		2D5CC4E12C5D84ED00AD81D0 /* EditPlayerFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlayerFormView.swift; sourceTree = "<group>"; };
@@ -49,9 +61,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D354B622C715B3D00499F31 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2D354B632C715B3D00499F31 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		2DF73E0D2C45EA3200EE1632 = {
 			isa = PBXGroup;
 			children = (
+				2D354B5C2C715B3D00499F31 /* FileImporterView.swift */,
+				2D354B572C715B3D00499F31 /* YearPicker.swift */,
+				2D354B612C715B3D00499F31 /* PTCGLeagueManagerApp.swift */,
+				2D354B5D2C715B3D00499F31 /* ContentView.swift */,
+				2D354B602C715B3D00499F31 /* Utilities.swift */,
+				2D354B5A2C715B3D00499F31 /* AttendaceFormView.swift */,
+				2D354B5B2C715B3D00499F31 /* EditPlayerFormView.swift */,
+				2D354B5E2C715B3D00499F31 /* PlayerDetailView.swift */,
+				2D354B5F2C715B3D00499F31 /* AddPlayerFormView.swift */,
+				2D354B592C715B3D00499F31 /* GroupView.swift */,
+				2D354B582C715B3D00499F31 /* Assets.xcassets */,
+				2D354B622C715B3D00499F31 /* Preview Content */,
 				2D354B562C715AA100499F31 /* .gitignore */,
 				2DF73E182C45EA3200EE1632 /* PTCGLeagueManager */,
 				2DF73E172C45EA3200EE1632 /* Products */,
