@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D058F702C6FF1BD00A3F293 /* FileImporterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D058F6F2C6FF1BD00A3F293 /* FileImporterView.swift */; };
+		2D07AD372C66A35A0000EF7E /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07AD362C66A35A0000EF7E /* GroupView.swift */; };
+		2D07AD392C6BBD430000EF7E /* YearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07AD382C6BBD430000EF7E /* YearPicker.swift */; };
+		2D5CC4DE2C5D847C00AD81D0 /* AddPlayerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5CC4DD2C5D847C00AD81D0 /* AddPlayerFormView.swift */; };
+		2D5CC4E02C5D84A800AD81D0 /* PlayerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5CC4DF2C5D84A800AD81D0 /* PlayerDetailView.swift */; };
+		2D5CC4E22C5D84ED00AD81D0 /* EditPlayerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5CC4E12C5D84ED00AD81D0 /* EditPlayerFormView.swift */; };
+		2D5CC4E42C5D8EB400AD81D0 /* AttendaceFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5CC4E32C5D8EB400AD81D0 /* AttendaceFormView.swift */; };
+		2D5CC4E62C61C71F00AD81D0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5CC4E52C61C71F00AD81D0 /* Utilities.swift */; };
 		2DF73E1A2C45EA3200EE1632 /* PTCGLeagueManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF73E192C45EA3200EE1632 /* PTCGLeagueManagerApp.swift */; };
 		2DF73E1C2C45EA3200EE1632 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF73E1B2C45EA3200EE1632 /* ContentView.swift */; };
 		2DF73E1E2C45EA3300EE1632 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DF73E1D2C45EA3300EE1632 /* Assets.xcassets */; };
@@ -14,6 +22,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D058F6F2C6FF1BD00A3F293 /* FileImporterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileImporterView.swift; sourceTree = "<group>"; };
+		2D07AD362C66A35A0000EF7E /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
+		2D07AD382C6BBD430000EF7E /* YearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearPicker.swift; sourceTree = "<group>"; };
+		2D354B562C715AA100499F31 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		2D5CC4DD2C5D847C00AD81D0 /* AddPlayerFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerFormView.swift; sourceTree = "<group>"; };
+		2D5CC4DF2C5D84A800AD81D0 /* PlayerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailView.swift; sourceTree = "<group>"; };
+		2D5CC4E12C5D84ED00AD81D0 /* EditPlayerFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlayerFormView.swift; sourceTree = "<group>"; };
+		2D5CC4E32C5D8EB400AD81D0 /* AttendaceFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendaceFormView.swift; sourceTree = "<group>"; };
+		2D5CC4E52C61C71F00AD81D0 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		2DF73E162C45EA3200EE1632 /* PTCGLeagueManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PTCGLeagueManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DF73E192C45EA3200EE1632 /* PTCGLeagueManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTCGLeagueManagerApp.swift; sourceTree = "<group>"; };
 		2DF73E1B2C45EA3200EE1632 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -35,6 +52,7 @@
 		2DF73E0D2C45EA3200EE1632 = {
 			isa = PBXGroup;
 			children = (
+				2D354B562C715AA100499F31 /* .gitignore */,
 				2DF73E182C45EA3200EE1632 /* PTCGLeagueManager */,
 				2DF73E172C45EA3200EE1632 /* Products */,
 			);
@@ -51,8 +69,16 @@
 		2DF73E182C45EA3200EE1632 /* PTCGLeagueManager */ = {
 			isa = PBXGroup;
 			children = (
+				2D058F6F2C6FF1BD00A3F293 /* FileImporterView.swift */,
+				2D07AD382C6BBD430000EF7E /* YearPicker.swift */,
 				2DF73E192C45EA3200EE1632 /* PTCGLeagueManagerApp.swift */,
 				2DF73E1B2C45EA3200EE1632 /* ContentView.swift */,
+				2D5CC4E52C61C71F00AD81D0 /* Utilities.swift */,
+				2D5CC4E32C5D8EB400AD81D0 /* AttendaceFormView.swift */,
+				2D5CC4E12C5D84ED00AD81D0 /* EditPlayerFormView.swift */,
+				2D5CC4DF2C5D84A800AD81D0 /* PlayerDetailView.swift */,
+				2D5CC4DD2C5D847C00AD81D0 /* AddPlayerFormView.swift */,
+				2D07AD362C66A35A0000EF7E /* GroupView.swift */,
 				2DF73E1D2C45EA3300EE1632 /* Assets.xcassets */,
 				2DF73E1F2C45EA3300EE1632 /* Preview Content */,
 			);
@@ -137,6 +163,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D07AD392C6BBD430000EF7E /* YearPicker.swift in Sources */,
+				2D5CC4E02C5D84A800AD81D0 /* PlayerDetailView.swift in Sources */,
+				2D5CC4E22C5D84ED00AD81D0 /* EditPlayerFormView.swift in Sources */,
+				2D07AD372C66A35A0000EF7E /* GroupView.swift in Sources */,
+				2D058F702C6FF1BD00A3F293 /* FileImporterView.swift in Sources */,
+				2D5CC4E62C61C71F00AD81D0 /* Utilities.swift in Sources */,
+				2D5CC4E42C5D8EB400AD81D0 /* AttendaceFormView.swift in Sources */,
+				2D5CC4DE2C5D847C00AD81D0 /* AddPlayerFormView.swift in Sources */,
 				2DF73E1C2C45EA3200EE1632 /* ContentView.swift in Sources */,
 				2DF73E1A2C45EA3200EE1632 /* PTCGLeagueManagerApp.swift in Sources */,
 			);
@@ -272,6 +306,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PTCGLeagueManager/Preview Content\"";
+				DEVELOPMENT_TEAM = 4DTM536V94;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -300,6 +335,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PTCGLeagueManager/Preview Content\"";
+				DEVELOPMENT_TEAM = 4DTM536V94;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

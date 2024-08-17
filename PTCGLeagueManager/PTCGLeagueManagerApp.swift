@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct PTCGLeagueManagerApp: App {
+    @StateObject private var playerList = PlayerListModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(playerList)
         }
     }
 }
