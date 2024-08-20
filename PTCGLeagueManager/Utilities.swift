@@ -134,6 +134,12 @@ extension DateFormatter {
         formatter.dateFormat = "MMMM_yyyy"
         return formatter
     }()
+    
+    static let slashes: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "M/d/yy"
+        return formatter
+    }()
 
 }
 

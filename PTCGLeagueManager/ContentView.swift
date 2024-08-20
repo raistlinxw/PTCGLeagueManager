@@ -20,89 +20,61 @@ struct ContentView: View {
     
     @State var monthlyreportAlert = false
     @State private var showingResetAlert = false
+    @State private var useShortTitle = false
 
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(sortPlayerList()) { player in
-                    VStack(alignment: .leading) {
-                        Toggle(isOn: Binding(
-                            get: { player.isChecked },
-                            set: { newValue in
-                                toggleCheck(for: player)
-                            }
-                        )) {
-                            Text(player.fullName())
-                                .onLongPressGesture {
-                                    activeSheet = .playerDetail(player)
+            VStack {
+                List {
+                    ForEach(sortPlayerList()) { player in
+                        VStack(alignment: .leading) {
+                            Toggle(isOn: Binding(
+                                get: { player.isChecked },
+                                set: { newValue in
+                                    toggleCheck(for: player)
                                 }
-                                .font(.headline)
-                                .strikethrough(player.isChecked, color: .primary)
-                                .foregroundColor(player.isChecked ? .gray : .primary)
+                            )) {
+                                Text(player.fullName())
+                                    .onLongPressGesture {
+                                        activeSheet = .playerDetail(player)
+                                    }
+                                    .font(.headline)
+                                    .strikethrough(player.isChecked, color: .primary)
+                                    .foregroundColor(player.isChecked ? .gray : .primary)
+                            }
                         }
                     }
-                }
-//                Button(action: {
-//                    UserDefaults.standard.resetDefaults()
-//                    resetPlayerListTest()
-//                }) {
-//                    Text("Reset To Test List")
-//                        .foregroundColor(.red)
-//                        .frame(maxWidth: .infinity, alignment: .center)
-//                }
-                Button(action: {
-                    print("reset button pressed")
-                    showingResetAlert = true
-                }) {
-                    Text("Reset List")
-                        .foregroundColor(.red)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                }
-                .alert(isPresented: $showingResetAlert) {
-                    Alert(
-                        title: Text("Are you sure?"),
-                        message: Text("This will reset the entire player list. This action cannot be undone."),
-                        primaryButton: .destructive(Text("Yes")) {
-                            UserDefaults.standard.resetDefaults()
-                            resetPlayerList()
-                        },
-                        secondaryButton: .cancel(Text("No"))
-                    )
-                }
-            }
-            .navigationTitle("\(DateFormatter.monthDayYear.string(from: Date.now))")
-            .searchable(text: $searchText, prompt: "Search Players")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                    //                Button(action: {
+                    //                    UserDefaults.standard.resetDefaults()
+                    //                    resetPlayerListTest()
+                    //                }) {
+                    //                    Text("Reset To Test List")
+                    //                        .foregroundColor(.red)
+                    //                        .frame(maxWidth: .infinity, alignment: .center)
+                    //                }
                     Button(action: {
-                        activeSheet = .fileImport
+                        print("reset button pressed")
+                        showingResetAlert = true
                     }) {
-                        Image(systemName: "tray.and.arrow.down")                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        activeSheet = .attendanceForm
-                    }) {
-                        Image(systemName: "folder")
+                        Text("Reset List")
+                            .foregroundColor(.red)
+                            .frame(maxWidth: .infinity, alignment: .center)
                     }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        activeSheet = .addPlayerForm
-                    }) {
-                        Image(systemName: "plus")
-                    }
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        formDataManager.generateForm(from: playerList.players, filename: "AttendanceReport_\(DateFormatter.underscores.string(from: Date.now)).txt")
-                        monthlyreportAlert = true
-                    }) {
-                        Text("Create Report")
+                    .alert(isPresented: $showingResetAlert) {
+                        Alert(
+                            title: Text("Are you sure?"),
+                            message: Text("This will reset the entire player list. This action cannot be undone."),
+                            primaryButton: .destructive(Text("Yes")) {
+                                UserDefaults.standard.resetDefaults()
+                                resetPlayerList()
+                            },
+                            secondaryButton: .cancel(Text("No"))
+                        )
                     }
                 }
             }
+            .navigationTitle(useShortTitle ? "\(Date.now, formatter: DateFormatter.slashes)" : "\(Date.now, formatter: DateFormatter.monthDayYear)")
             .alert(isPresented: $monthlyreportAlert) {
                 Alert(
                     title: Text("Important message"),
@@ -165,6 +137,37 @@ struct ContentView: View {
                     }
                 }
                 
+            }
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search Players")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        activeSheet = .fileImport
+                    }) {
+                        Image(systemName: "tray.and.arrow.down")                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        activeSheet = .attendanceForm
+                    }) {
+                        Image(systemName: "folder")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        activeSheet = .addPlayerForm
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        formDataManager.generateForm(from: playerList.players, filename: "AttendanceReport_\(DateFormatter.underscores.string(from: Date.now)).txt")
+                        monthlyreportAlert = true
+                    }) {
+                        Text("Create Report")
+                    }
+                }
             }
             .onAppear {
                 checkForDailyReset(&playerList.players)

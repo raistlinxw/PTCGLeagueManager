@@ -95,8 +95,7 @@ struct FileImporterView: View {
         }
         
         // Create Date Formatter
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M/d/yy"
+        let dateFormatter = DateFormatter.slashes
         
         for row in rows.dropFirst() {
             let csvColumns = row.components(separatedBy: ",")

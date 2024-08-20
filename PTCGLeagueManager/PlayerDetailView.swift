@@ -77,5 +77,6 @@ struct PlayerDetailView: View {
             Spacer()
             Text(value)
         }
+        .padding(.horizontal)
     }
 }
