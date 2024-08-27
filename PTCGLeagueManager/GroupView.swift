@@ -1,7 +1,5 @@
 // TO DO
-// Show the player I am grouping on this page somewhere
 // Add the ability to create a new group with ungrouped players
-// BUG: If I add a player to a group, then select another player, it should add that selected player to the group I am already in
 
 import SwiftUI
 
@@ -16,61 +14,61 @@ struct GroupView: View {
     @State var warningTitle = ""
     @State var warningMessage = ""
     @State private var tempPlayer: Player
-    @State private var previewGroupID: UUID? // To track the group ID where the player is previewed
+    @State private var previewGroupID: UUID?
     @State private var searchText = ""
     
     init(player: Binding<Player>) {
         self._player = player
-        // Initialize the tempPlayer with the current player’s state
         self._tempPlayer = State(initialValue: player.wrappedValue)
         self._previewGroupID = State(initialValue: player.wrappedValue.groupID)
     }
     
     var body: some View {
         NavigationView {
-            List {
-                let filteredPlayers = filterPlayerList()
-                let uniqueGroupIDs = getUniqueSortedGroupIDs(from: filteredPlayers)
-                
-                ForEach(Array(uniqueGroupIDs.enumerated()), id: \.element) { index, groupID in
-                    Section(header: Text("Group \(index + 1)")) {
-                        // Preview the player in this group
-                        if previewGroupID == groupID {
+            VStack {
+                List {
+                    let filteredPlayers = filterPlayerList()
+                    let uniqueGroupIDs = getUniqueSortedGroupIDs(from: filteredPlayers)
+                    
+                    ForEach(Array(uniqueGroupIDs.enumerated()), id: \.element) { index, groupID in
+                        Section(header: Text("Group \(index + 1)")) {
+                            if previewGroupID == groupID {
+                                Text("\(tempPlayer.fullName())")
+                                    .italic()
+                                    .foregroundColor(.blue)
+                            }
+                            ForEach(playersInGroup(groupID, from: filteredPlayers)) { listPlayer in
+                                if previewGroupID != groupID || listPlayer.id != player.id {
+                                    Text("\(listPlayer.fullName())")
+                                }
+                            }
+                        }
+                        .onTapGesture {
+                            handleGroupTap(groupID: groupID, index: index)
+                        }
+                    }
+                    
+                    Section(header: Text("Ungrouped")) {
+                        ForEach(filteredPlayers.filter { $0.groupID == ungroupedUUID }) { listPlayer in
+                            if previewGroupID != ungroupedUUID || listPlayer.id != player.id {
+                                Text("\(listPlayer.fullName())")
+                                    .onTapGesture {
+                                        handleUngroupedTap(listPlayer: listPlayer)
+                                    }
+                            }
+                        }
+                        // Preview the player in the ungrouped section
+                        if previewGroupID == ungroupedUUID {
                             Text("\(tempPlayer.fullName())")
                                 .italic()
                                 .foregroundColor(.blue)
                         }
-                        ForEach(playersInGroup(groupID, from: filteredPlayers)) { listPlayer in
-                            if previewGroupID != groupID || listPlayer.id != player.id {
-                                Text("\(listPlayer.fullName())")
-                            }
-                        }
                     }
-                    .onTapGesture {
-                        handleGroupTap(groupID: groupID, index: index)
-                    }
+                    
                 }
-                
-                Section(header: Text("Ungrouped")) {
-                    ForEach(filteredPlayers.filter { $0.groupID == ungroupedUUID }) { listPlayer in
-                        if previewGroupID != ungroupedUUID || listPlayer.id != player.id {
-                            Text("\(listPlayer.fullName())")
-                            .onTapGesture {
-                                handleUngroupedTap(listPlayer: listPlayer)
-                            }
-                        }
-                    }
-                    // Preview the player in the ungrouped section
-                    if previewGroupID == ungroupedUUID {
-                        Text("\(tempPlayer.fullName())")
-                            .italic()
-                            .foregroundColor(.blue)
-                    }
-                }
-                
             }
             .navigationTitle("Player Groups")
-            .searchable(text: $searchText, prompt: "Search Players")
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search Players")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Save") {

@@ -54,7 +54,7 @@ class PlayerListModel: ObservableObject {
     ]) {
         self.players = players
     }
-    
+        
     func saveToUserDefaults() {
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(players) {

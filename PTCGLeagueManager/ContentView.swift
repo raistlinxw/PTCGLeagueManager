@@ -5,6 +5,13 @@
 //  Created by Michael Parker on 7/15/24.
 //
 
+// TODO
+//When I add a person to a group, it messes up the sort order of the names on the main list.    I don't see an obvious pattern/error to the sort order after adding a person to a group.    This probably is manifesting itself after a few days of data entry when the sort is factoring in last attendance date.
+//
+//-- Advanced Request:
+//A way to filter/tab/switch views between unmarked people  and marked people, or a way to quickly change the sort order from 'default :unmarked, most recent, alphabetical' to 'marked, most recent, alphabetical'  .    I found myself wanting to verify people marked, to make sure I entered them, and having to scroll to the bottom was tedious.
+
+
 import SwiftUI
 
 struct ContentView: View {
@@ -21,7 +28,17 @@ struct ContentView: View {
     @State var monthlyreportAlert = false
     @State private var showingResetAlert = false
     @State private var useShortTitle = false
-
+    
+// Possible fix for a filter button in Nav Title
+//    HStack {
+//        Text("Today")
+//            .font(.largeTitle.bold())
+//        
+//        Spacer()
+//        
+//        Image(systemName: "person.crop.circle")
+//    }
+//    .padding()
     
     var body: some View {
         NavigationView {
@@ -36,8 +53,19 @@ struct ContentView: View {
                                 }
                             )) {
                                 Text(player.fullName())
-                                    .onLongPressGesture {
-                                        activeSheet = .playerDetail(player)
+                                    .swipeActions(allowsFullSwipe: false) {
+                                        Button(role: .destructive) {
+                                            print("Deleting player")
+                                        } label: {
+                                            Label("Delete", systemImage: "trash.fill")
+                                        }
+                                        Button {
+                                            print("Viewing Details of Player")
+                                            activeSheet = .playerDetail(player)
+                                        } label: {
+                                            Label("Edit", systemImage: "info.circle")
+                                        }
+                                        .tint(.indigo)
                                     }
                                     .font(.headline)
                                     .strikethrough(player.isChecked, color: .primary)
@@ -73,7 +101,11 @@ struct ContentView: View {
                         )
                     }
                 }
+                //END OF LIST
+//                .padding(.top, -40)
             }
+            // END OF VSTACK
+//            .navigationBarHidden(true)
             .navigationTitle(useShortTitle ? "\(Date.now, formatter: DateFormatter.slashes)" : "\(Date.now, formatter: DateFormatter.monthDayYear)")
             .alert(isPresented: $monthlyreportAlert) {
                 Alert(
@@ -178,6 +210,19 @@ struct ContentView: View {
                 stopTimer()
             }
         }
+        // END OF NAV VIEW
+        
+// Another possible fix for nav title filter button
+//        .navigationBarTitleDisplayMode(.inline)
+//        .toolbar {
+//            ToolbarItem(placement: .principal) {
+//                HStack {
+////                        Image(systemName: "sun.min.fill")
+//                    Text("\(Date.now, formatter: DateFormatter.slashes)").font(.headline)
+//                }
+//            }
+//        }
+        
     }
     
     private func filterPlayerList() -> [Player] {
