@@ -20,6 +20,7 @@ struct EditPlayerFormView: View {
     @State private var discord: String
     @State private var includeDOB: Bool
     @State private var isShowingGroupView = false
+    @State private var editAlert = false
 
     init(player: Binding<Player>) {
         self._player = player
@@ -32,6 +33,17 @@ struct EditPlayerFormView: View {
         self._discord = State(initialValue: player.wrappedValue.discord)
         self._includeDOB = State(initialValue: player.wrappedValue.dob != nil)
     }
+    
+    private var hasChanges: Bool {
+        return firstName != player.firstName ||
+               lastName != player.lastName ||
+               playerid != player.playerid ||
+               dob != player.dob ||
+               email != player.email ||
+               phoneNumber != player.phoneNumber ||
+               discord != player.discord ||
+               includeDOB != (player.dob != nil)
+    }
 
     var body: some View {
         Form {
@@ -39,13 +51,10 @@ struct EditPlayerFormView: View {
                 CustomTextField(placeholder: "First Name", text: $firstName)
                 CustomTextField(placeholder: "Last Name", text: $lastName)
                 
-                Toggle("Include Date of Birth", isOn: $includeDOB)
-                if includeDOB {
-                    YearPicker(selection: Binding(
-                        get: { dob ?? Date() },
-                        set: { dob = $0 }
-                    ))
-                }
+                YearPicker(selection: Binding(
+                    get: { dob ?? Date() },
+                    set: { dob = $0 }
+                ))
                 
                 CustomTextField(placeholder: "Player ID", text: $playerid)
                 CustomTextField(placeholder: "Email", text: $email)
@@ -58,10 +67,21 @@ struct EditPlayerFormView: View {
             }
 
             Button("Save") {
-                saveChanges()
-                presentationMode.wrappedValue.dismiss()
+                editAlert = true
             }
+            .disabled(!hasChanges)
         }
+        .alert(isPresented: $editAlert, content: {
+            Alert(
+                title: Text("Confirm Save"),
+                message: Text("Are you sure you want to apply these changes?"),
+                primaryButton: .default(Text("Yes")) {
+                    saveChanges()
+                    presentationMode.wrappedValue.dismiss()
+                },
+                secondaryButton: .cancel(Text("No"))
+            )
+        })
         .sheet(isPresented: $isShowingGroupView) {
                 GroupView(player: $player)
         }

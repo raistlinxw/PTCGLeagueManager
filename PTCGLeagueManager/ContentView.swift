@@ -28,8 +28,11 @@ struct ContentView: View {
     @State var monthlyreportAlert = false
     @State private var showingResetAlert = false
     @State private var useShortTitle = false
+    @State private var deleteAlert = false
+    @State private var selectedPlayer = Player()
+
     
-// Possible fix for a filter button in Nav Title
+    // Possible fix for a filter button in Nav Title
 //    HStack {
 //        Text("Today")
 //            .font(.largeTitle.bold())
@@ -54,19 +57,31 @@ struct ContentView: View {
                             )) {
                                 Text(player.fullName())
                                     .swipeActions(allowsFullSwipe: false) {
-                                        Button(role: .destructive) {
-                                            print("Deleting player")
+                                        Button {
+                                            selectedPlayer = player
+                                            deleteAlert = true
                                         } label: {
                                             Label("Delete", systemImage: "trash.fill")
                                         }
+                                        .tint(.red)
                                         Button {
-                                            print("Viewing Details of Player")
-                                            activeSheet = .playerDetail(player)
+                                            print("Editing Player")
+                                            activeSheet = .editPlayer(player)
                                         } label: {
-                                            Label("Edit", systemImage: "info.circle")
+                                            Label("Edit", systemImage: "pencil")
+                                        }
+                                        .tint(.yellow)
+                                        Button {
+                                            print("Viewing Player")
+                                            activeSheet = .editPlayer(player)
+                                        } label: {
+                                            Label("View", systemImage: "info")
                                         }
                                         .tint(.indigo)
                                     }
+//                                    .onLongPressGesture {
+//                                        activeSheet = .playerDetail(player)
+//                                    }
                                     .font(.headline)
                                     .strikethrough(player.isChecked, color: .primary)
                                     .foregroundColor(player.isChecked ? .gray : .primary)
@@ -102,10 +117,10 @@ struct ContentView: View {
                     }
                 }
                 //END OF LIST
-//                .padding(.top, -40)
+                //                .padding(.top, -40)
             }
             // END OF VSTACK
-//            .navigationBarHidden(true)
+            //            .navigationBarHidden(true)
             .navigationTitle(useShortTitle ? "\(Date.now, formatter: DateFormatter.slashes)" : "\(Date.now, formatter: DateFormatter.monthDayYear)")
             .alert(isPresented: $monthlyreportAlert) {
                 Alert(
@@ -116,6 +131,16 @@ struct ContentView: View {
                     }
                 )
             }
+            .alert(isPresented: $deleteAlert, content: {
+                Alert(
+                    title: Text("Confirm Delete"),
+                    message: Text("Are you sure you want to delete this player?"),
+                    primaryButton: .destructive(Text("Yes")) {
+                        deletePlayer(player: selectedPlayer)
+                    },
+                    secondaryButton: .cancel(Text("No"))
+                )
+            })
             .sheet(item: $activeSheet) { item in
                 switch item {
                 case .addPlayerForm:
@@ -158,6 +183,19 @@ struct ContentView: View {
                     NavigationView {
                         if let playerIndex = playerList.players.firstIndex(where: { $0.id == player.id }) {
                             PlayerDetailView(player: $playerList.players[playerIndex])
+                                .toolbar {
+                                    ToolbarItem(placement: .cancellationAction) {
+                                        Button("Close") {
+                                            activeSheet = nil
+                                        }
+                                    }
+                                }
+                        }
+                    }
+                case .editPlayer(let player):
+                    NavigationView {
+                        if let playerIndex = playerList.players.firstIndex(where: { $0.id == player.id }) {
+                            EditPlayerFormView(player: $playerList.players[playerIndex])
                                 .toolbar {
                                     ToolbarItem(placement: .cancellationAction) {
                                         Button("Close") {
@@ -430,51 +468,11 @@ struct ContentView: View {
         print("All UserDefaults have been reset and player list reset to default.")
     }
     
-//    private func cleanRows(file:String) -> String {
-//        var cleanFile = file
-//        cleanFile = cleanFile.replacingOccurrences(of: "\r", with: "\n")
-//        cleanFile = cleanFile.replacingOccurrences(of: "\n\n", with: "\n")
-//        return cleanFile
-//
-//    }
-//
-//    private func readCSV(filename: NSString) -> [Player] {
-//        var csvToPlayerList = [Player]()
-//        
-//        let pathExtention = filename.pathExtension
-//        let pathPrefix = filename.deletingPathExtension
-//        
-//        guard let filePath = Bundle.main.path(forResource: pathPrefix, ofType: pathExtention) else {
-//            print("Erorr: file not found")
-//            return []
-//        }
-//        
-//        var data = ""
-//        do {
-//            data = try String(contentsOfFile: filePath)
-//        } catch {
-//            print(error)
-//            return []
-//        }
-//        
-//        data = cleanRows(file: data)
-//        
-//        var rows = data.components(separatedBy: "\n")
-//        rows.removeFirst()
-//
-//        // Create Date Formatter
-//        let dateFormatter = DateFormatter()
-//        for row in rows {
-//            let csvColumns = row.components(separatedBy: ",")
-//            if csvColumns.count == rows.first?.components(separatedBy: ",").count {
-//                let lineStruct = Player(firstName: csvColumns[0], lastName: csvColumns[1], playerid: csvColumns[2], dob: dateFormatter.date(from: csvColumns[3]), email: csvColumns[4], phoneNumber: csvColumns[5], discord: csvColumns[6])
-//                csvToPlayerList.append(lineStruct)
-//            }
-//        }
-//        
-//        
-//        return csvToPlayerList
-//    }
+    func deletePlayer(player: Player) {
+        if let playerIndex = playerList.players.firstIndex(where: { $0.id == player.id }) {
+            playerList.players.remove(at: playerIndex)
+        }
+    }
 
 }
 

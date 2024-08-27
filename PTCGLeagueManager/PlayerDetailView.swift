@@ -28,29 +28,29 @@ struct PlayerDetailView: View {
         }
         .navigationTitle("Player Details")
         .toolbar {
-            Button(action: {
-                deleteAlert = true
-            }) {
-                Image(systemName: "trash")
-            }
+//            Button(action: {
+//                deleteAlert = true
+//            }) {
+//                Image(systemName: "trash")
+//            }
             
-            Button(action: {
-                isShowingEditPlayerForm = true
-            }) {
-                Image(systemName: "pencil")
-            }
+//            Button(action: {
+//                isShowingEditPlayerForm = true
+//            }) {
+//                Image(systemName: "pencil")
+//            }
         }
-        .alert(isPresented: $deleteAlert, content: {
-            Alert(
-                title: Text("Confirm Delete"),
-                message: Text("Are you sure you want to delete this player?"),
-                primaryButton: .destructive(Text("Yes")) {
-                    deletePlayer(player: player)
-                    presentationMode.wrappedValue.dismiss()
-                },
-                secondaryButton: .cancel(Text("No"))
-            )
-        })
+//        .alert(isPresented: $deleteAlert, content: {
+//            Alert(
+//                title: Text("Confirm Delete"),
+//                message: Text("Are you sure you want to delete this player?"),
+//                primaryButton: .destructive(Text("Yes")) {
+//                    deletePlayer(player: player)
+//                    presentationMode.wrappedValue.dismiss()
+//                },
+//                secondaryButton: .cancel(Text("No"))
+//            )
+//        })
         .sheet(isPresented: $isShowingEditPlayerForm) {
             NavigationView {
                 EditPlayerFormView(player: $player)

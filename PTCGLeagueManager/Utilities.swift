@@ -149,7 +149,8 @@ enum ActiveSheet: Identifiable {
     case attendanceForm
     case playerDetail(Player)
     case fileImport
-
+    case editPlayer(Player)
+    
     var id: Int {
         switch self {
         case .addPlayerForm:
@@ -160,61 +161,62 @@ enum ActiveSheet: Identifiable {
             return 2
         case .playerDetail(let player):
             return player.id.hashValue
+        case .editPlayer(let player):
+            return player.id.hashValue
         }
     }
 }
-
-
-// Global class to handle generating forms on ContentView and the AttendanceFormView
-class FormDataManager: ObservableObject {
-    @Published var forms: [FormData] {
-        didSet {
-            saveToUserDefaults()
-        }
-    }
-
-    init(forms: [FormData] = UserDefaults.standard.loadFormData() ?? []) {
-        self.forms = forms
-    }
     
-    // Method to generate and save a form
-    func generateForm(from playerList: [Player], filename: String) {
-        var formText = ""
-        
-        let dateFormatter = DateFormatter.year
-        
-        for player in playerList where player.attendance > 0 && player.playerid != "" && player.dob != nil {
-            formText.append("\(player.playerid) \(player.fullName()) \(dateFormatter.string(from: player.dob ?? Date())) \n")
+    
+    // Global class to handle generating forms on ContentView and the AttendanceFormView
+    class FormDataManager: ObservableObject {
+        @Published var forms: [FormData] {
+            didSet {
+                saveToUserDefaults()
+            }
         }
         
-        let date = Date()
-        if let fileURL = saveToTextFile(content: formText, fileName: filename) {
-            let newForm = FormData(date: date, fileURL: fileURL)
-            forms.append(newForm)
+        init(forms: [FormData] = UserDefaults.standard.loadFormData() ?? []) {
+            self.forms = forms
+        }
+        
+        // Method to generate and save a form
+        func generateForm(from playerList: [Player], filename: String) {
+            var formText = ""
+            
+            let dateFormatter = DateFormatter.year
+            
+            for player in playerList where player.attendance > 0 && player.playerid != "" && player.dob != nil {
+                formText.append("\(player.playerid) \(player.fullName()) \(dateFormatter.string(from: player.dob ?? Date())) \n")
+            }
+            
+            let date = Date()
+            if let fileURL = saveToTextFile(content: formText, fileName: filename) {
+                let newForm = FormData(date: date, fileURL: fileURL)
+                forms.append(newForm)
+            }
+        }
+        
+        // Method to save forms to UserDefaults
+        private func saveToUserDefaults() {
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(forms) {
+                UserDefaults.standard.set(encoded, forKey: "formsData")
+            }
+        }
+        
+        // Method to save content to a text file and return the file URL
+        private func saveToTextFile(content: String, fileName: String) -> URL? {
+            let fileManager = FileManager.default
+            do {
+                let documentsURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                let fileURL = documentsURL.appendingPathComponent(fileName)
+                try content.write(to: fileURL, atomically: true, encoding: .utf8)
+                return fileURL
+            } catch {
+                print("Error saving file: \(error)")
+                return nil
+            }
         }
     }
-    
-    // Method to save forms to UserDefaults
-    private func saveToUserDefaults() {
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(forms) {
-            UserDefaults.standard.set(encoded, forKey: "formsData")
-        }
-    }
-    
-    // Method to save content to a text file and return the file URL
-    private func saveToTextFile(content: String, fileName: String) -> URL? {
-        let fileManager = FileManager.default
-        do {
-            let documentsURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let fileURL = documentsURL.appendingPathComponent(fileName)
-            try content.write(to: fileURL, atomically: true, encoding: .utf8)
-            return fileURL
-        } catch {
-            print("Error saving file: \(error)")
-            return nil
-        }
-    }
-}
-
 
