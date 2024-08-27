@@ -73,7 +73,7 @@ struct ContentView: View {
                                         .tint(.yellow)
                                         Button {
                                             print("Viewing Player")
-                                            activeSheet = .editPlayer(player)
+                                            activeSheet = .playerDetail(player)
                                         } label: {
                                             Label("View", systemImage: "info")
                                         }
