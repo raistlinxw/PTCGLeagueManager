@@ -29,10 +29,6 @@ struct AddPlayerFormView: View {
 
                 CustomTextField(placeholder: "Player ID", text: $newPlayer.playerid)
                     .keyboardType(.numberPad)
-                CustomTextField(placeholder: "Email", text: $newPlayer.email)
-                CustomTextField(placeholder: "Discord", text: $newPlayer.discord)
-                CustomTextField(placeholder: "Phone Number", text: $newPlayer.phoneNumber)
-                    .keyboardType(.numberPad)
             }
             
             Button("Add to Group") {
@@ -42,6 +38,13 @@ struct AddPlayerFormView: View {
             Button("Save") {
                 addPlayer(newPlayer: newPlayer)
             }
+            Section(header: Text("Player Information")) {
+                CustomTextField(placeholder: "Email", text: $newPlayer.email)
+                CustomTextField(placeholder: "Discord", text: $newPlayer.discord)
+                CustomTextField(placeholder: "Phone Number", text: $newPlayer.phoneNumber)
+                    .keyboardType(.numberPad)
+            }
+
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {

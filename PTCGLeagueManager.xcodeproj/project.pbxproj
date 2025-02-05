@@ -17,6 +17,8 @@
 		2DC61EAE2C715FD200A25FC2 /* EditPlayerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D354B5B2C715B3D00499F31 /* EditPlayerFormView.swift */; };
 		2DC61EAF2C715FD200A25FC2 /* PlayerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D354B5E2C715B3D00499F31 /* PlayerDetailView.swift */; };
 		2DC61EB02C715FD200A25FC2 /* AddPlayerFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D354B5F2C715B3D00499F31 /* AddPlayerFormView.swift */; };
+		332ACE582D5400CB0033384C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332ACE572D5400C50033384C /* Player.swift */; };
+		33EDC7DA2C751A1A00AD6AD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D354B582C715B3D00499F31 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,7 @@
 		2D354B612C715B3D00499F31 /* PTCGLeagueManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTCGLeagueManagerApp.swift; sourceTree = "<group>"; };
 		2D354B632C715B3D00499F31 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2DF73E162C45EA3200EE1632 /* PTCGLeagueManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PTCGLeagueManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		332ACE572D5400C50033384C /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,7 @@
 			children = (
 				2D354B5C2C715B3D00499F31 /* FileImporterView.swift */,
 				2D354B572C715B3D00499F31 /* YearPicker.swift */,
+				332ACE572D5400C50033384C /* Player.swift */,
 				2D354B612C715B3D00499F31 /* PTCGLeagueManagerApp.swift */,
 				2D354B5D2C715B3D00499F31 /* ContentView.swift */,
 				2D354B602C715B3D00499F31 /* Utilities.swift */,
@@ -149,6 +153,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33EDC7DA2C751A1A00AD6AD5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				332ACE582D5400CB0033384C /* Player.swift in Sources */,
 				2DC61EA82C715FD200A25FC2 /* FileImporterView.swift in Sources */,
 				2DC61EA92C715FD200A25FC2 /* Utilities.swift in Sources */,
 				2DC61EAA2C715FD200A25FC2 /* GroupView.swift in Sources */,
@@ -299,10 +305,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PTCGLeagueManager/Preview Content\"";
-				DEVELOPMENT_TEAM = 4DTM536V94;
+				DEVELOPMENT_TEAM = YQUEVA76VW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -328,10 +335,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PTCGLeagueManager/Preview Content\"";
-				DEVELOPMENT_TEAM = 4DTM536V94;
+				DEVELOPMENT_TEAM = YQUEVA76VW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

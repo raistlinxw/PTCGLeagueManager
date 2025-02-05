@@ -15,9 +15,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    @Environment(\.modelContext) private var modelContext
+    @Query private var playerObjects: [PlayerObject]
+
     @StateObject private var formDataManager = FormDataManager()
-    @EnvironmentObject var playerList: PlayerListModel
+//    @EnvironmentObject var playerList: PlayerListModel
     
     @State private var timer: Timer?
     @State private var searchText: String = ""

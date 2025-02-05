@@ -11,12 +11,11 @@ struct YearPicker: View {
     
     @Binding var selectedDate: Date
     let yearRange: ClosedRange<Int>
-    
-    init(selection: Binding<Date>, yearRange: ClosedRange<Int> = 1900...2024) {
+
+    init(selection: Binding<Date>, yearRange: ClosedRange<Int> = 1950...2025) {
         self._selectedDate = selection
         self.yearRange = yearRange
         
-        // Ajustar el año seleccionado dentro del rango
         let calendar = Calendar.current
         let year = calendar.component(.year, from: selection.wrappedValue)
         if !yearRange.contains(year) {
