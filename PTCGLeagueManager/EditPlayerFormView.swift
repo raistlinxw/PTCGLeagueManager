@@ -14,7 +14,7 @@ struct EditPlayerFormView: View {
     @State private var firstName: String
     @State private var lastName: String
     @State private var playerid: String
-    @State private var dob: Date?
+    @State private var dob: Date? = Date()
     @State private var email: String
     @State private var phoneNumber: String
     @State private var discord: String

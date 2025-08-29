@@ -184,10 +184,21 @@ enum ActiveSheet: Identifiable {
         func generateForm(from playerList: [Player], filename: String) {
             var formText = ""
             
+            let calendar = Calendar.current
+            let now = Date()
+            
             let dateFormatter = DateFormatter.year
             
-            for player in playerList where player.attendance > 0 && player.playerid != "" && player.dob != nil {
-                formText.append("\(player.playerid) \(player.fullName()) \(dateFormatter.string(from: player.dob ?? Date())) \n")
+            let sortedPlayers = playerList
+                .filter { $0.attendance > 0 && !$0.playerid.isEmpty && $0.dob != nil }
+                .sorted { ($0.lastDateChecked ?? Date.distantPast) > ($1.lastDateChecked ?? Date.distantPast) }
+            
+//            for player in playerList where player.attendance > 0 && player.playerid != "" && player.dob != nil {
+            for player in sortedPlayers{
+                let components = calendar.dateComponents([.day], from: (player.lastDateChecked ?? Date.distantPast), to: now)
+                let lastAttendenceAge = components.day!
+                print("\(player.playerid) \(player.fullName()) \(dateFormatter.string(from: player.dob ?? Date.distantPast )) \(lastAttendenceAge)")
+                formText.append("\(player.playerid) \(player.fullName()) \(dateFormatter.string(from: player.dob ?? Date.distantPast) ) \(lastAttendenceAge) \n")
             }
             
             let date = Date()

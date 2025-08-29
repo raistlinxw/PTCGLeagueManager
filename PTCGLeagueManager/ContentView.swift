@@ -15,11 +15,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var playerObjects: [PlayerObject]
-
     @StateObject private var formDataManager = FormDataManager()
-//    @EnvironmentObject var playerList: PlayerListModel
+    @EnvironmentObject var playerList: PlayerListModel
     
     @State private var timer: Timer?
     @State private var searchText: String = ""
@@ -33,18 +30,7 @@ struct ContentView: View {
     @State private var deleteAlert = false
     @State private var selectedPlayer = Player()
 
-    
-    // Possible fix for a filter button in Nav Title
-//    HStack {
-//        Text("Today")
-//            .font(.largeTitle.bold())
-//        
-//        Spacer()
-//        
-//        Image(systemName: "person.crop.circle")
-//    }
-//    .padding()
-    
+        
     var body: some View {
         NavigationView {
             VStack {
@@ -90,14 +76,6 @@ struct ContentView: View {
                             }
                         }
                     }
-                    //                Button(action: {
-                    //                    UserDefaults.standard.resetDefaults()
-                    //                    resetPlayerListTest()
-                    //                }) {
-                    //                    Text("Reset To Test List")
-                    //                        .foregroundColor(.red)
-                    //                        .frame(maxWidth: .infinity, alignment: .center)
-                    //                }
                     Button(action: {
                         print("reset button pressed")
                         showingResetAlert = true

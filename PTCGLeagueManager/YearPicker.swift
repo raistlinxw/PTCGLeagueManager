@@ -12,7 +12,7 @@ struct YearPicker: View {
     @Binding var selectedDate: Date
     let yearRange: ClosedRange<Int>
 
-    init(selection: Binding<Date>, yearRange: ClosedRange<Int> = 1950...2025) {
+    init(selection: Binding<Date>, yearRange: ClosedRange<Int> = 1904...2025) {
         self._selectedDate = selection
         self.yearRange = yearRange
         
