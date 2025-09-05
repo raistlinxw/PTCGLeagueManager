@@ -14,6 +14,13 @@
 
 import SwiftUI
 
+enum SortOption: String, CaseIterable, Identifiable {
+    case unchecked = "Unchecked"
+    case checked = "Checked"
+    
+    var id: String { self.rawValue }
+}
+
 struct ContentView: View {
     @StateObject private var formDataManager = FormDataManager()
     @EnvironmentObject var playerList: PlayerListModel
@@ -30,10 +37,22 @@ struct ContentView: View {
     @State private var deleteAlert = false
     @State private var selectedPlayer = Player()
 
+//    @State private var selectedOption = "Option 1"
+//    let options = ["Option 1", "Option 2", "Option 3"]
+
+    @State private var selectedSort: SortOption = .unchecked
+
         
     var body: some View {
         NavigationView {
             VStack {
+                Picker("Sory By", selection: $selectedSort) {
+                    ForEach(SortOption.allCases) { option in
+                                            Text(option.rawValue).tag(option)
+                                        }
+                               }
+                               .pickerStyle(SegmentedPickerStyle()) // You can change this to .wheel or .menu
+//                               .padding()
                 List {
                     ForEach(sortPlayerList()) { player in
                         VStack(alignment: .leading) {
@@ -100,8 +119,6 @@ struct ContentView: View {
                 //                .padding(.top, -40)
             }
             // END OF VSTACK
-            //            .navigationBarHidden(true)
-            .navigationTitle(useShortTitle ? "\(Date.now, formatter: DateFormatter.slashes)" : "\(Date.now, formatter: DateFormatter.monthDayYear)")
             .alert(isPresented: $monthlyreportAlert) {
                 Alert(
                     title: Text("Important message"),
@@ -190,13 +207,13 @@ struct ContentView: View {
             }
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search Players")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        activeSheet = .fileImport
-                    }) {
-                        Image(systemName: "tray.and.arrow.down")                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    Button(action: {
+//                        activeSheet = .fileImport
+//                    }) {
+//                        Image(systemName: "tray.and.arrow.down")                    }
+//                }
+                ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         activeSheet = .attendanceForm
                     }) {
@@ -210,14 +227,14 @@ struct ContentView: View {
                         Image(systemName: "plus")
                     }
                 }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        formDataManager.generateForm(from: playerList.players, filename: "AttendanceReport_\(DateFormatter.underscores.string(from: Date.now)).txt")
-                        monthlyreportAlert = true
-                    }) {
-                        Text("Create Report")
-                    }
-                }
+//                ToolbarItem(placement: .navigationBarLeading) {
+//                    Button(action: {
+//                        formDataManager.generateForm(from: playerList.players, filename: "AttendanceReport_\(DateFormatter.underscores.string(from: Date.now)).txt")
+//                        monthlyreportAlert = true
+//                    }) {
+//                        Text("Create Report")
+//                    }
+//                }
             }
             .onAppear {
                 checkForDailyReset(&playerList.players)
@@ -251,6 +268,19 @@ struct ContentView: View {
         
     private func sortPlayerList() -> [Player] {
         return filterPlayerList().sorted { (firstPlayer, secondPlayer) -> Bool in
+            
+            
+            switch selectedSort {
+            case .unchecked:
+                if firstPlayer.isChecked != secondPlayer.isChecked {
+                    return !firstPlayer.isChecked && secondPlayer.isChecked
+                }
+            case .checked:
+                if firstPlayer.isChecked != secondPlayer.isChecked {
+                    return firstPlayer.isChecked && !secondPlayer.isChecked
+                }
+            }
+
             // Ensure unchecked players are always at the top
             if firstPlayer.isChecked != secondPlayer.isChecked {
                 return !firstPlayer.isChecked && secondPlayer.isChecked

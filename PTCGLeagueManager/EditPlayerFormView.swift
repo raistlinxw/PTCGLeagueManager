@@ -56,20 +56,25 @@ struct EditPlayerFormView: View {
                     set: { dob = $0 }
                 ))
                 
+                //                CustomTextField(placeholder: "Player ID", text: $playerid)
                 CustomTextField(placeholder: "Player ID", text: $playerid)
+                    .keyboardType(.numberPad)
+            }
+                Button("Add to Group") {
+                    isShowingGroupView = true
+                }
+
+                Button("Save") {
+                    editAlert = true
+                }
+                .disabled(!hasChanges)
+            Section(header: Text("Player Information")) {
                 CustomTextField(placeholder: "Email", text: $email)
                 CustomTextField(placeholder: "Discord", text: $discord)
                 CustomTextField(placeholder: "Phone Number", text: $phoneNumber)
             }
             
-            Button("Add to Group") {
-                isShowingGroupView = true
-            }
-
-            Button("Save") {
-                editAlert = true
-            }
-            .disabled(!hasChanges)
+          
         }
         .alert(isPresented: $editAlert, content: {
             Alert(
