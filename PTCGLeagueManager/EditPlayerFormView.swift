@@ -14,7 +14,8 @@ struct EditPlayerFormView: View {
     @State private var firstName: String
     @State private var lastName: String
     @State private var playerid: String
-    @State private var dob: Date? = Date()
+    @State private var dob: Date = Date()
+//    @State private var dob: Date? = Date()
     @State private var email: String
     @State private var phoneNumber: String
     @State private var discord: String
@@ -27,7 +28,7 @@ struct EditPlayerFormView: View {
         self._firstName = State(initialValue: player.wrappedValue.firstName)
         self._lastName = State(initialValue: player.wrappedValue.lastName)
         self._playerid = State(initialValue: player.wrappedValue.playerid)
-        self._dob = State(initialValue: player.wrappedValue.dob)
+        self._dob = State(initialValue: player.wrappedValue.dob ?? Date())
         self._email = State(initialValue: player.wrappedValue.email)
         self._phoneNumber = State(initialValue: player.wrappedValue.phoneNumber)
         self._discord = State(initialValue: player.wrappedValue.discord)
@@ -51,10 +52,14 @@ struct EditPlayerFormView: View {
                 CustomTextField(placeholder: "First Name", text: $firstName)
                 CustomTextField(placeholder: "Last Name", text: $lastName)
                 
-                YearPicker(selection: Binding(
-                    get: { dob ?? Date() },
-                    set: { dob = $0 }
-                ))
+                
+                YearPicker(selection: $dob)
+
+//                YearPicker(selection: Binding(
+////                    get: { dob ?? Date() },
+//                    get: { dob },
+//                    set: { dob = $0 }
+//                ))
                 
                 //                CustomTextField(placeholder: "Player ID", text: $playerid)
                 CustomTextField(placeholder: "Player ID", text: $playerid)
@@ -97,7 +102,8 @@ struct EditPlayerFormView: View {
         player.firstName = firstName
         player.lastName = lastName
         player.playerid = playerid
-        player.dob = includeDOB ? dob : nil
+        player.dob = dob
+//        player.dob = includeDOB ? dob : nil
         player.email = email
         player.phoneNumber = phoneNumber
         player.discord = discord
